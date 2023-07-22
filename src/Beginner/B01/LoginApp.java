@@ -4,49 +4,50 @@ import java.util.Scanner;
 
 public class LoginApp {
 
-    static  boolean aktif = true;
+    static  boolean aktif = true; // değişkeni main dışına atadım method içersinde kullanabilmek için.
     static  int kalanHakSayisi = 3;
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        if (aktif){
-            if (kalanHakSayisi > 0){
-                while (aktif){
-                    System.out.print("Kullanici adiniz: ");
-                    String username = scanner.nextLine();
-                    System.out.print("Şifreniz: ");
-                    String password = scanner.nextLine();
-                    boolean sonuc = login(username , password);
-                    if (sonuc){
-                        System.out.println("Uygulama başarılı olarak giriş yaptınız");
-                        break;
-                    } else {
-                        if (kalanHakSayisi == 0){
-                            aktif=false;
-                            break;
+        Scanner scanner = new Scanner(System.in); // Kullanicidan bir girdi almak için.
+
+        if (aktif){ // Eğer aktif == true ise
+            if (kalanHakSayisi > 0){ // Eğer kalanHakSayisi > 0 ise
+                while (aktif){ // while döngüsü çalışır aynı zamanda aktif == true ise
+                    System.out.print("Kullanici adiniz: "); // Kullanici adini girer.
+                    String username = scanner.nextLine(); // girilen ad username'e atanır
+                    System.out.print("Şifreniz: "); // Kullanici şifresini girer.
+                    String password = scanner.nextLine(); // girilen şifre password'a atanır
+                    boolean sonuc = login(username , password); // login method'u sonuc'a atanır.
+                    if (sonuc){ // sonuc metodunun return type'ı true ise
+                        System.out.println("Uygulama başarılı olarak giriş yaptınız"); // kullanıcı başarılı bir şekilde giriş yapar.
+                        break; // döngü kırılır ve döngü tekrar etmez.
+                    } else { // sonuc metodunun return type'ı false ise
+                        if (kalanHakSayisi == 0){ // kalanHakSayisi == 0'a eşit ise
+                            aktif=false; // aktiflik false olur
+                            break; // döngü kırılır
                         }
-                        System.out.println("Kalan hakkınız: " + kalanHakSayisi);
+                        System.out.println("Kalan hakkınız: " + kalanHakSayisi); // Kullanıcı her yanlış giriş yaptığında kalan hak ekrana yazdırılır.
                     }
                 }
-                if (!aktif){
-                    System.out.println("Hak sayınız dolmuştur.");
+                if (!aktif){ // aktif false ise
+                    System.out.println("Hak sayınız dolmuştur."); // yazdırılır
                 }
-            } else {
-                System.out.println("Hak sayınız dolmuştur, hesabınız bloke oldu!");
+            } else { // kalanHakSayisi 0'dan büyük değilse
+                System.out.println("Hak sayınız dolmuştur, hesabınız bloke oldu!"); // yazdirilir
             }
-        } else {
-            System.out.println("Hesabınız aktif değildir, yöneticiniz ile iletişime geçiniz!");
+        } else { // aktif == true değilse
+            System.out.println("Hesabınız aktif değildir, yöneticiniz ile iletişime geçiniz!"); // yazdirilir
         }
     }
 
-    public static boolean login (String username, String password){
-        if (username.equals("Vitalik") && password.equals("ETH123")){
-            return true;
-        } else {
-            kalanHakSayisi--;
-            System.out.println("Kullanıcı adı ve şifreniz yanlıştır.");
-            return false;
+    public static boolean login (String username, String password){ // bu call bize true veya false döndürür.
+        if (username.equals("Vitalik") && password.equals("ETH123")){ // Kullanıcı adı Vitalik, şifre ETH123 ise return true döndürür.
+            return true; // return true döndürür.
+        } else { // değilse
+            kalanHakSayisi--; // kalanHakSayisisi 1 azalır
+            System.out.println("Kullanıcı adı ve şifreniz yanlıştır."); // yazdırılır
+            return false; // return false döndürür.
         }
     }
 }
