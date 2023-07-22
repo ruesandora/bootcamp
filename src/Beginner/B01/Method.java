@@ -7,6 +7,18 @@ public class Method {
          topla(957,312);
          isimVeSoyisim("Vitalik" , "Uniswapoğlu");
 
+        int methottanGelenSonuc = carp(5,3);
+        String donenDeger = isimDondur("Enes");
+
+    }
+
+    public static String isimDondur(String isim){
+        return isim;
+    }
+
+    public static int carp(int num1, int num2){
+        int sonuc = num1*num2;
+        return sonuc;
     }
 
     public static void isimVeSoyisim(String isim, String soyisim){
