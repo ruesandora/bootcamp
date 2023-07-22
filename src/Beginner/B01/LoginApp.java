@@ -26,6 +26,7 @@ public class LoginApp {
                             aktif=false;
                             break;
                         }
+                        System.out.println("Kalan hakkınız: " + kalanHakSayisi);
                     }
                 }
                 if (!aktif){
