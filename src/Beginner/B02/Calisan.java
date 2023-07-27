@@ -19,7 +19,9 @@ public class Calisan {
   }
 
   public void calisanBilgileriGoster(){
+    System.out.println();
     System.out.println("****CALISAN BILGILERI****");
+    System.out.println();
     System.out.println("No: " + no);
     System.out.println("İsim: " + isim);
     System.out.println("Soyisim: " + soyisim);
